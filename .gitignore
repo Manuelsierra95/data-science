@@ -1,5 +1,6 @@
 # ignore
 *.DS_Store
+*.catboost_info
 .ipynb_checkpoints
 __pycache__
 

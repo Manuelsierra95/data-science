@@ -19,3 +19,7 @@ parts/
 sdist/
 var/
 wheels/
+
+# Files
+*.jpg
+*.jpeg

@@ -1,8 +1,6 @@
-import info
-import tensorflow as tf
-import modeling
+import imports as im
 
-def create_data_batches(X, y=None, batch_size=info.BATCH_SIZE, valid_data=False, test_data=False):
+def create_data_batches(X, y=None, batch_size=im.info.BATCH_SIZE, valid_data=False, test_data=False):
   '''
   Create a batches of data from a image (X) and label (y) pairs
   Shuffles the data if it's training data but dosen't if it's validation data
@@ -12,23 +10,23 @@ def create_data_batches(X, y=None, batch_size=info.BATCH_SIZE, valid_data=False,
   '''
   if test_data:
     print('Creating test data batches...')
-    data = tf.data.Dataset.from_tensor_slices((tf.constant(X))) # No labels
-    data_batch = data.map(modeling.process_image()).batch(batch_size)
+    data = im.tf.data.Dataset.from_tensor_slices((im.tf.constant(X))) # No labels
+    data_batch = data.map(im.modeling.process_image()).batch(batch_size)
 
   elif valid_data:
     print('Creating valid data batches...')
-    data = tf.data.Dataset.from_tensor_slices((tf.constant(X), # filepath
-                                              tf.constant(y))) # labels
-    data_batch = data.map(modeling.get_image_label()).batch(batch_size)
+    data = im.tf.data.Dataset.from_tensor_slices((im.tf.constant(X), # filepath
+                                              im.tf.constant(y))) # labels
+    data_batch = data.map(im.modeling.get_image_label()).batch(batch_size)
 
   else:
     print('Creating training data batches...')
     # Turn filepaths and labels into a Tensor
-    data = tf.data.Dataset.from_tensor_slices((tf.constant(X),
-                                              tf.constant(y)))
+    data = im.tf.data.Dataset.from_tensor_slices((im.tf.constant(X),
+                                              im.tf.constant(y)))
     # Shuffle the pathnames and labels (is faster shuffle labels and then map this images, than shuffle the images)
     data = data.shuffle(buffer_size=len(X))
-    data_batch = data.map(modeling.get_image_label()).batch(batch_size)
+    data_batch = data.map(im.modeling.get_image_label()).batch(batch_size)
   
   return data_batch
 
@@ -42,6 +40,6 @@ def unbatchify(data):
   _labels = []
   for image, label in data.unbatch().as_numpy_iterator():
     _images.append(image)
-    _labels.append(modeling.get_pred_label(label))
+    _labels.append(im.modeling.get_pred_label(label))
   
   return _images, _labels

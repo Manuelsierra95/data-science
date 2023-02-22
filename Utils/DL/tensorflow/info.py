@@ -1,3 +1,5 @@
+import imports as im
+
 '''
     This is a file for put and extract the info of the GLOBAL_VARS
 '''
@@ -20,3 +22,8 @@ LOG_PATH = '/content/drive/MyDrive/Dog-Vision' + '/log'
 
 NUM_EPOCH = 100
 
+
+def get_version_info():
+    print(im.tf.__version__)
+    print(im.hub.__version__)
+    print('GPU', 'available :)' if im.tf.config.list_physical_devices("GPU") else 'Not available :(')

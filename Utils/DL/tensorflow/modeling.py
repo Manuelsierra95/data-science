@@ -95,7 +95,7 @@ def train_model(train_data, val_data, num_epoch=im.info.NUM_EPOCH):
 def check_logs(log_path=im.info.LOG_PATH):
   # Checking the logs
   log_path = './' + log_path
-  %tensorboard --logdir "$log_path"
+  # %tensorboard --logdir "$log_path"
 
 def get_pred_label(preds_proba):
   '''

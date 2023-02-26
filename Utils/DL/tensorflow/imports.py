@@ -16,4 +16,4 @@ import callbacks
 import modeling
 
 # TensorBoard notebook extension
-%load_ext tensorboard
+# %load_ext tensorboard

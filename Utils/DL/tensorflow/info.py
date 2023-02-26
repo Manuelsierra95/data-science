@@ -2,6 +2,9 @@ import imports as im
 
 '''
     This is a file for put and extract the info of the GLOBAL_VARS
+    Note: for load the files use
+    import sys
+    sys.path.append('/content/drive/MyDrive/Utils/DL/tensorflow')
 '''
 BATCH_SIZE = 32
 

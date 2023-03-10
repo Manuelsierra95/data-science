@@ -89,6 +89,7 @@ def train_model(train_data, val_data, num_epoch=im.info.NUM_EPOCH):
             validation_data=val_data,
             validation_freq=1,
             callbacks=[tensorboard, earlystopping])
+  im.ntfy.send_notification(f"Model {model} trained for {num_epoch} epochs")
   
   return model
 

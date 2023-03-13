@@ -3,6 +3,7 @@ import imports as im
 def open_img(image_path):
     img = im.Image.open(image_path)
     print(img.width, img.height)
+    print("shape: ", im.np.array(img).shape)
     im.display(img)
 
 def show_train_images(train_data, unique_labels, figsize=(10, 10), img_stack=None):

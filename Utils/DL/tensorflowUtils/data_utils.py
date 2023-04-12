@@ -24,4 +24,3 @@ def labels_to_boolean(label_to_conver, info=True):
         print(boolean_labels[0].argmax())
         print(boolean_labels[0].astype(int))
     return boolean_labels
-
